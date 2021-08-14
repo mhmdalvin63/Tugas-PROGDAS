@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><center>Pengiriman Barang</center></h1>
+    <script>
+        var pengirim = prompt('nama pengirim')
+        document.write('nama pengirim :', pengirim, '<br>')
+        var penerima = prompt('nama penerima')
+        document.write('nama penerima :', penerima, '<br>')
+        var jarak = prompt('jarak pengiriman (KM):')
+        document.write('jarak pengiriman :', jarak, "Km", '<br>')
+        var alper = prompt('alamat penerima : ')
+        document.write('alamat penerima :', alper, '<br>')
+        var jebar = prompt('jenis barang :')
+        document.write('jenis barang :', jebar, '<br>')
+        var berat = prompt('berat barang (KG):')
+        document.write('berat barang :', berat, "Kg", '<br>')
+
+        var biaya_berat = berat * 5000
+        var diskon1 = ""
+        if (biaya_berat >= 100000) {
+            diskon1 = biaya_berat * 0.05
+        } else {
+            diskon1 = 0
+        }
+
+        var biaya_jarak = jarak * 10000
+        var diskon2 = ""
+        if (biaya_jarak >= 50000) {
+            diskon2 = biaya_jarak * 0.1
+        } else {
+            diskon2 = 0
+        }
+        var total_diskon = diskon1 + diskon2;
+        var total_pembayaran = (biaya_jarak + biaya_berat) - total_diskon;
+
+        document.write('<b> harga diskon jarak</b> =' + diskon2 + '<br>')
+        document.write('<b> harga diskon berat</b> =' + diskon1 + '<br>')
+        document.write('<b> total diskon </b> =' + total_diskon + '<br>')
+        document.write('<b> total pembayaran</b> =' + total_pembayaran + '<br>')
+    </script>
+</body>
+</html>
