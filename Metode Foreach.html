@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h1>FOREACH</h1>
+<body>
+    <!-- FOREACH MERUPAKAN PERULANGAN KHUSUS UNTUK PEMBACAAN NILAI ARRAY -->
+    <!-- FOREACH BIASA DIGUNAKAN UNTUK MENCETAK ITEM DIDALAM ARRAY -->
+    <script>
+        // FOREACH DENGAN MENGGUNAKAN METODE FOREACH()
+        var bulan = ["Januari","Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", 
+        "Oktober", "November", "Desember"];
+        bulan.forEach((bulan)=>{
+            document.write("<p>"+bulan+ "</p>" );
+        })
+    </script>
+    <br>
+    <script>
+        // FOREACH DENGAM METODE "IN;"
+        var buah = ["Jeruk","Mangga","Apel","Manggis","Melon","Semangka"];
+        for(i in buah){D
+            document.write(i+". "+buah[i]+ "<br/>");
+        }
+    </script>
+</body>
+</html>
