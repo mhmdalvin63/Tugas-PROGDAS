@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <title>Form Pendaftaran</title>
+    <style>
+        h1{
+            color: white;
+            background: rgb(47, 0, 255);
+            border: 1px solid orange;
+            height: 60px;
+        }
+        .container{
+            width: 800px;
+
+        }
+    </style>
+  </head>
+  <body>
+      <h1 id="h1"><center>FORM  PENDAFTARAN</center></h1>
+      <br>
+      <br>
+    <div class="container">
+        <label for="Nama Siswa" class="form-label">Nama Siswa</label>
+        <input type="text" class="form-control" id="txt_namasiswa">
+    </div>
+    <br>
+    <div class="container">
+        <label for="Kelas" class="form-label">Kelas</label>
+        <select id="txt_kelassiswa" class="form-select">
+          <option value="X">X</option>
+          <option value="XI">XI</option>
+          <option value="XII">XII</option>
+        </select>
+    </div>
+    <br>
+    <div class="container">
+      <label for="Nama Siswa" class="form-label">No HP/Telepon</label>
+      <input type="text" class="form-control" id="txt_notelpon">
+  </div>
+  <br>
+    <div class="container">
+        <label for="Alamat">Alamat</label>
+        <textarea class="form-control" id="txt_alamatsiswa" rows="3"></textarea>
+    </div>
+    <br>
+    <div class="container">
+        <button class="btn btn-primary mt=4" onclick="add()">Simpan</button>
+    </div>
+    <br>
+    <div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Nama Siswa</th>
+                <th scope="col">Kelas</th>
+                <th scope="col">No.HP</th>
+                <th scope="col">Alamat</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody id="tampildata">
+                
+            </tbody>
+          </table>
+    </div>
+    
+    <script>
+      var namasiswa = ['Muhammad Alvin']
+      var kelas = ['XI RPL 1']
+      var notelpon = ['0888 1234 5678']
+      var alamat = ['Kp.ciherang kec.sukatani tapos, depok']
+      
+
+      var tampil = document.getElementById('tampildata')
+
+      function showdata() {
+        tampil.innerHTML=""
+
+        for(i = 0; i< namasiswa.length; i++){
+          var nodata = i+1
+
+          tampil.innerHTML+="<tr>"+
+                    "<th>"+nodata+"</th>"+
+                    "<td>"+namasiswa[i]+"</td>"+
+                    "<td>"+kelas[i]+"</td>"+
+                    "<td>"+notelpon[i]+"</td>"+
+                    "<td>"+alamat[i]+"</td>"+
+                    "<td>"+
+                        "<button class='btn btn-warning'onclick='edit("+i+")'>edit</button>"+
+                        "<button class='btn btn-danger'onclick='hapus("+i+")'>Hapus</button>"+
+                    "</td>"+
+                "</tr>" 
+        }
+      }
+  showdata()
+
+    function add() {
+      var namabaru = document.getElementById('txt_namasiswa').value
+      var kelasbaru = document.getElementById('txt_kelassiswa').value
+      var notelpbaru = document.getElementById('txt_notelpon').value
+      var alamatbaru = document.getElementById('txt_alamatsiswa').value
+
+      namasiswa.push(namabaru)
+      kelas.push(kelasbaru)
+      notelpon.push(notelpbaru)
+      alamat.push(alamatbaru)
+       showdata()
+    }
+
+    function hapus(i) {
+      var namabaru = document.getElementById('txt_namasiswa').value
+      var kelasbaru = document.getElementById('txt_kelassiswa').value
+      var notelpbaru = document.getElementById('txt_notelpon').value
+      var alamatbaru = document.getElementById('txt_alamatsiswa').value
+
+      namasiswa.splice(i,1)
+      kelas.splice(i,1)
+      notelpon.splice(i, 1)
+      alamat.splice(i,1)
+      
+      showdata()
+    }
+    function edit(i){
+      var mengubah = prompt("add nama", namasiswa[i])
+      namasiswa[i] = mengubah;
+      var mengubah = prompt("add kelas", kelas[i])
+      kelas[i] = mengubah;
+      var mengubah = prompt("add no", notelpon[i])
+      notelpon[i]= mengubah;
+      var mengubah = prompt("add alamat", alamat[i])
+      alamat[i]= mengubah;
+
+      showdata()
+      
+    }
+
+
+
+    </script> 
+    
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
