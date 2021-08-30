@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <title>Helmet Gallery</title>
+    <style>
+        .jumbotron{
+            height: 400px;
+            background-image: url(https://dbs9nopbkp043.cloudfront.net/images/profile/IMG_20210417_172220_1618654953854_resized1024.jpg);
+            background-position-x: 100px;
+        }
+        .judullist{
+            height: 25px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <!-- <h1 class="display-4" >@Jagoan_Helm</h1>
+          <p class="lead">Helm nya para Jagoann</p> -->
+        </div>
+      </div>
+
+      <div class="container">
+          <div class="row">
+            <div class="col-4">
+                <div class="judullist bg-dark rounded text-center text-white">List Produk</div>
+
+                <div class="listkeranjang" id="listkeranjang"></div>
+
+                
+
+                  <table width='100%''>
+                      <tbody>
+                          <tr>
+                              <td>Diskon (10%)</td>
+                              <td>Rp. <span id="diskon"></span></td>
+                          </tr>
+                          <tr>
+                            <td>PPN (1%)</td>
+                            <td>Rp. <span id="pajak"></span></td>
+                        </tr>
+                        <tr class="bg-dark text-white">
+                            <td>Total bayar</td>
+                            <td>Rp. <span id="totalbayar"></span></td>
+                        </tr>
+                      </tbody>
+                  </table>
+
+                  <a href="form.html"><button type="button" class="btn btn-primary mt-3 btn-lg btn-block">Bayar</button></a>
+  
+               </div>
+            <div class="col-8" id="listproduk">
+  
+                <!-- <div class="card float-left mr-3 mb-3" style="width: 14rem;">
+                    <img src="https://img-z.okeinfo.net/okz/500/library/images/2019/08/11/dwb7w688b4tozotperv9_19531.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Helm</h5>
+                      <p class="card-text">Rp. 200000</p>
+                      <a href="#" class="btn btn-primary">Beli</a>
+                    </div>
+                  </div>
+
+                  <div class="card float-left mr-3 mb-3" style="width: 14rem;">
+                    <img src="https://img-z.okeinfo.net/okz/500/library/images/2019/08/11/dwb7w688b4tozotperv9_19531.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Helm</h5>
+                      <p class="card-text">Rp. 200000</p>
+                      <a href="#" class="btn btn-primary">Beli</a>
+                    </div>
+                  </div>
+
+                  <div class="card float-left mr-3 mb-3" style="width: 14rem;">
+                    <img src="https://img-z.okeinfo.net/okz/500/library/images/2019/08/11/dwb7w688b4tozotperv9_19531.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Helm</h5>
+                      <p class="card-text">Rp. 200000</p>
+                      <a href="#" class="btn btn-primary">Beli</a>
+                    </div>
+                  </div> -->
+
+            </div>
+          </div>
+      </div>
+
+      <script>
+          var namabarang = ["Fullface KYT TT-Course", "Halfface KYT Kyoto paket ganteng", "Fullface KYT K2-R Ironman series"]
+          var hargabarang = [1350000, 650000, 550000]
+          var gambarbarang = [
+          "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//101/MTA-8157845/kyt_helm_kyt_tt_course_dalla_porta_helm_kyt_full_face_full01_pewky4nh.jpg",
+            "https://cf.shopee.co.id/file/659b3b2922c91f149a28e261e4c328b1",
+            "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//96/MTA-11774742/kyt_kyt_k2_rider_iron_man_helm_full_face_kyt_k2r_full01_lbrcxah1.jpg"
+        ]
+
+        var listproduk = document.getElementById('listproduk')
+
+        var listkeranjang = document.getElementById('listkeranjang')
+        var tampilanDiskon = document.getElementById('diskon')
+        var tampilanppn = document.getElementById('pajak')
+        var tampilantotalbayar = document.getElementById('totalbayar')
+        var bayarbarangtotal = document.getElementById('bayarbarang')
+
+        var namabarang_keranjang = []
+        var hargabarang_keranjang = []
+
+        function showlistproduk() {
+            listproduk.innerHTML = ''
+            
+            for (let i = 0; i < namabarang.length; i++) {
+                listproduk.innerHTML += '<div class="card float-left mr-3 mb-3" style="width: 14rem;">'+
+                    '<img src="'+gambarbarang[i]+'" alt="...">'+
+                    '<div class="card-body">'+
+                      '<h5 class="card-title">'+namabarang[i]+'</h5>'+
+                      '<p class="card-text">Rp. '+hargabarang[i]+'</p>'+
+                      '<a href="#" class="btn btn-primary" onclick="addlistitem('+i+')">Beli</a>'+
+                    '</div>'+
+                  '</div>'
+                
+            }
+        }
+
+        function addlistitem(id) {
+            namabarang_keranjang.push(namabarang[id])
+            hargabarang_keranjang.push(hargabarang[id])
+
+            showlistkeranjang()
+
+            console.log(namabarang_keranjang[id])
+
+            
+        }
+
+        function showlistkeranjang() {
+            listkeranjang.innerHTML = ''
+
+            var Discount = 0
+            var pajak = 0
+            var hargatotal = 0
+            var totalbayar = 0
+
+            for (let i = 0; i < namabarang_keranjang.length; i++) {
+                listkeranjang.innerHTML += '<div class="card mt-3 mb-3" style="width: 22rem;">'+
+                    '<div class="card-body">'+
+                      '<h5 class="card-title">'+namabarang_keranjang[i]+'</h5>'+
+                      '<p class="card-text">Rp. '+hargabarang_keranjang[i]+'</p>'+
+                      '<p>Jumlah = 1</p>'+
+                      '<a href="#" class="btn btn-danger float-right" onclick="deleteitem('+i+')">Hapus</a>'+
+                    '</div>'+
+                  '</div>' 
+                  
+                  hargatotal = hargabarang_keranjang[i] + hargatotal
+                  
+                  totalbayar = hargatotal
+
+                  if(totalbayar>1500000){
+                      Discount = totalbayar*0.1
+                  }else{
+                      Discount = 0
+                  }
+                  
+                  if(totalbayar>1000000){
+                      pajak = totalbayar*0.01
+                  }else{
+                      pajak = 0
+                  }
+                 
+                  totalbayar = hargatotal + Discount - pajak
+                  tampilanppn.innerHTML = pajak
+                  tampilanDiskon.innerHTML = Discount
+                  tampilantotalbayar.innerHTML = totalbayar
+
+                  
+            }
+        }
+
+
+        showlistproduk()
+
+
+        function deleteitem(id) {
+            namabarang_keranjang.splice(id, 1)
+            hargabarang_keranjang.splice(id, 1)
+
+            showlistkeranjang()
+        }
+
+
+      </script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
